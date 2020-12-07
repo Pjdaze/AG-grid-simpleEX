@@ -7,8 +7,6 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 const App = () => {
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [ghData, setGhData] = useState({});
-
   const [rowData, setRowData] = useState([]);
 
   useEffect(() => {
