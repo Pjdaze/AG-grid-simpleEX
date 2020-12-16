@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
@@ -12,8 +12,19 @@ import { entries } from "./entries";
 function App() {
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
+  const [rowData, setRowData] = useState([]);
+  const [sapValues, setSapValues] = useState({});
 
-  const [rowData, setRowData] = useState(entries);
+  useEffect(() => {
+    const url = "https://sapvalues-api.herokuapp.com/sap-values";
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((rowData) => {
+        setRowData(rowData);
+      });
+    console.log(sapValues);
+  }, []);
 
   return (
     <div className="App">
@@ -23,9 +34,9 @@ function App() {
           style={{ height: 400, width: 600 }}
         >
           <AgGridReact rowData={rowData}>
-            <AgGridColumn field="name"></AgGridColumn>
-            <AgGridColumn field="email"></AgGridColumn>
-            <AgGridColumn field="password"></AgGridColumn>
+            <AgGridColumn field="label"></AgGridColumn>
+            <AgGridColumn field="value.LyeSapValue"></AgGridColumn>
+            <AgGridColumn field="value.PotassiumSapValue"></AgGridColumn>
           </AgGridReact>
         </div>
       </header>
