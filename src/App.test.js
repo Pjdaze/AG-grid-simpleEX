@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
@@ -36,3 +37,13 @@ test("Check if have logo and link to home page", () => {
 //  expect(homeDom.firstChild).toEqual(/Home/);
 //});
 //
+=======
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+>>>>>>> a017f138ffa3b2cbbf187ca503a6006d57ccc7f9
