@@ -159,6 +159,12 @@ function App() {
               sortable={true}
               filter={true}
               checkboxSelection={true}
+              field="Type"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
               field="Title"
             ></AgGridColumn>
             <AgGridColumn
@@ -166,12 +172,6 @@ function App() {
               filter={true}
               checkboxSelection={true}
               field="Year"
-            ></AgGridColumn>
-            <AgGridColumn
-              sortable={true}
-              filter={true}
-              checkboxSelection={true}
-              field="Type"
             ></AgGridColumn>
           </AgGridReact>
         </div>
