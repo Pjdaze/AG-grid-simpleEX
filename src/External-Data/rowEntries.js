@@ -25,7 +25,6 @@ export const fecthUsers = () => {
     });
 };
 export const fetchGHData = () => {
-  const MyKey = process.env.IMDB_KEY;
   const GH_URL = "http://www.omdbapi.com/?s=Friday_the_13th&apikey=b43154e3";
 
   return Axios.get(GH_URL)
