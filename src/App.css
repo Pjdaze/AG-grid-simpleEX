@@ -24,6 +24,27 @@
   color: white;
 }
 
+.grid-header {
+  color: #fff;
+  border: 0.5px solid #fff;
+}
+@media only screen and (max-width: 748px) {
+  .App-header {
+    background-color: #fff;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #282c34;
+  }
+
+  .grid-header {
+    color: #282c34;
+    border: 0.5px solid #fff;
+  }
+}
 .App-link {
   color: #61dafb;
 }

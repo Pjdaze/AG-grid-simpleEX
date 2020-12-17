@@ -4,7 +4,7 @@ export const fetchSapData = () => {
 
   return Axios.get(url)
     .then(({ data }) => {
-      console.log(data);
+      //console.log(data);
       return data;
     })
     .catch((err) => {
@@ -17,8 +17,21 @@ export const fecthUsers = () => {
 
   return Axios.get(randomUserURL)
     .then(({ data }) => {
-      console.log(data);
+      ///console.log(data);
       return data;
+    })
+    .catch((err) => {
+      //console.log("error:", err);
+    });
+};
+export const fetchGHData = () => {
+  const MyKey = process.env.IMDB_KEY;
+  const GH_URL = "http://www.omdbapi.com/?s=Friday_the_13th&apikey=b43154e3";
+
+  return Axios.get(GH_URL)
+    .then(({ data }) => {
+      console.log("Movies : ", data.Search);
+      return [...data.Search];
     })
     .catch((err) => {
       console.log("error:", err);
