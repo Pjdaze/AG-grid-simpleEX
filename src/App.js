@@ -1,30 +1,24 @@
 import React, { useState, useEffect } from "react";
-
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-community/dist/styles/ag-theme-material.css";
-import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-theme-balham-dark.css";
 import "./App.css";
-import { entries } from "./entries";
+import { entries, fetchSapData, fecthUsers } from "./External-Data/rowEntries";
 
 function App() {
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [rowData, setRowData] = useState([]);
-  const [sapValues, setSapValues] = useState({});
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const url = "https://sapvalues-api.herokuapp.com/sap-values";
+    fetchSapData().then((rowData) => {
+      setRowData(rowData || "There is no data");
+    });
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((rowData) => {
-        setRowData(rowData);
-      });
-    console.log(sapValues);
+    fecthUsers().then((users) => {
+      setUsers(users || "No users here...");
+    });
   }, []);
 
   return (
@@ -32,7 +26,32 @@ function App() {
       <header className="App-header">
         <div
           className="ag-theme-balham-dark"
-          style={{ height: 400, width: 600 }}
+          style={{ height: 400, width: "96%", margin: "0 auto" }}
+        >
+          <AgGridReact rowData={entries}>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="name"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="email"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="password"
+            ></AgGridColumn>
+          </AgGridReact>
+        </div>
+        <div
+          className="ag-theme-balham-dark"
+          style={{ height: 400, width: "96%", margin: "0 auto" }}
         >
           <AgGridReact rowData={rowData}>
             <AgGridColumn
@@ -52,6 +71,55 @@ function App() {
               filter={true}
               checkboxSelection={true}
               field="value.PotassiumSapValue"
+            ></AgGridColumn>
+          </AgGridReact>
+        </div>
+        <div
+          className="ag-theme-balham-dark"
+          style={{ height: 400, width: "96%", margin: "0 auto" }}
+        >
+          <AgGridReact rowData={users}>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="states"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="dateChecked"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="death"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="positive"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="negative"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="pending"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="recovered"
             ></AgGridColumn>
           </AgGridReact>
         </div>
