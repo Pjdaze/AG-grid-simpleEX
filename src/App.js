@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-community/dist/styles/ag-theme-material.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "ag-grid-community/dist/styles/ag-theme-balham-dark.css";
@@ -34,9 +35,24 @@ function App() {
           style={{ height: 400, width: 600 }}
         >
           <AgGridReact rowData={rowData}>
-            <AgGridColumn field="label"></AgGridColumn>
-            <AgGridColumn field="value.LyeSapValue"></AgGridColumn>
-            <AgGridColumn field="value.PotassiumSapValue"></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="label"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="value.LyeSapValue"
+            ></AgGridColumn>
+            <AgGridColumn
+              sortable={true}
+              filter={true}
+              checkboxSelection={true}
+              field="value.PotassiumSapValue"
+            ></AgGridColumn>
           </AgGridReact>
         </div>
       </header>
