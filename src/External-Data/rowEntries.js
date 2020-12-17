@@ -8,7 +8,7 @@ export const fetchSapData = () => {
       return data;
     })
     .catch((err) => {
-      console.log("error:", err);
+      console.log("error: ", err);
     });
 };
 
