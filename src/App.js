@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
+import SapValueGrid from "./SapValuesGrid";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
@@ -10,7 +11,7 @@ const App = () => {
   const [rowData, setRowData] = useState([]);
 
   useEffect(() => {
-    const url = "https://api.github.com/users?since=990";
+    const url = "https://api.github.com/users?since=2000";
     fetch(url)
       .then((res) => res.json())
 
@@ -21,14 +22,29 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className="App-header">
       <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
-        <AgGridReact rowData={rowData}>
-          <AgGridColumn field="id"></AgGridColumn>
-          <AgGridColumn field="login"></AgGridColumn>
-          <AgGridColumn field="repos_url"></AgGridColumn>
+        <AgGridReact headerHeight={50} rowData={rowData}>
+          <AgGridColumn filter={true} sortable={true} field="id"></AgGridColumn>
+
+          <AgGridColumn filter={true} sortable={true} field="login">
+            <span>
+              <img src={rowData.map((x) => x.avatar_url)} alt="" />
+            </span>
+          </AgGridColumn>
+          <AgGridColumn
+            filter={true}
+            sortable={true}
+            field="avatar_url"
+          ></AgGridColumn>
+          <AgGridColumn
+            filter={true}
+            sortable={true}
+            field="repos_url"
+          ></AgGridColumn>
         </AgGridReact>
       </div>
+      <br />
     </div>
   );
 };
