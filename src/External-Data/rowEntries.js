@@ -25,7 +25,7 @@ export const fecthUsers = () => {
     });
 };
 export const fetchGHData = () => {
-  const GH_URL = "http://www.omdbapi.com/?s=Friday_the_13th&apikey=b43154e3";
+  const GH_URL = "https://www.omdbapi.com/?s=Friday_the_13th&apikey=b43154e3";
 
   return Axios.get(GH_URL)
     .then(({ data }) => {

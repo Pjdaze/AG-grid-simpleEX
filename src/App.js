@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
-<<<<<<< HEAD
-import SapValueGrid from "./SapValuesGrid";
-
-=======
->>>>>>> b3530e8f1d0d9b15bea66997b57dc2c4aeb9f867
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham-dark.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
@@ -24,11 +19,6 @@ function App() {
   const [ghData, setGhData] = useState([]);
 
   useEffect(() => {
-<<<<<<< HEAD
-    const url = "https://api.github.com/users?since=2000";
-    fetch(url)
-      .then((res) => res.json())
-=======
     fetchSapData().then((rowData) => {
       setRowData(rowData || "There is no data");
     });
@@ -36,7 +26,6 @@ function App() {
     fecthUsers().then((users) => {
       setUsers(users || "No users here...");
     });
->>>>>>> b3530e8f1d0d9b15bea66997b57dc2c4aeb9f867
 
     fetchGHData().then((ghData) => {
       setGhData(ghData || "No users here...");
@@ -44,31 +33,6 @@ function App() {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <div className="App-header">
-      <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
-        <AgGridReact headerHeight={50} rowData={rowData}>
-          <AgGridColumn filter={true} sortable={true} field="id"></AgGridColumn>
-
-          <AgGridColumn filter={true} sortable={true} field="login">
-            <span>
-              <img src={rowData.map((x) => x.avatar_url)} alt="" />
-            </span>
-          </AgGridColumn>
-          <AgGridColumn
-            filter={true}
-            sortable={true}
-            field="avatar_url"
-          ></AgGridColumn>
-          <AgGridColumn
-            filter={true}
-            sortable={true}
-            field="repos_url"
-          ></AgGridColumn>
-        </AgGridReact>
-      </div>
-      <br />
-=======
     <div className="App">
       <header className="App-header">
         <div
@@ -212,7 +176,6 @@ function App() {
           </AgGridReact>
         </div>
       </header>
->>>>>>> b3530e8f1d0d9b15bea66997b57dc2c4aeb9f867
     </div>
   );
 }

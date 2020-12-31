@@ -29,12 +29,13 @@
   border: 0.5px solid #fff;
 }
 @media only screen and (max-width: 748px) {
+
   .App-header {
     background-color: #fff;
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 10px;
+    grid-gap: 50px;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: #282c34;
@@ -42,7 +43,8 @@
 
   .grid-header {
     color: #282c34;
-    border: 0.5px solid #fff;
+    border: 0.5px solid #282c34;
+    
   }
 }
 .App-link {
